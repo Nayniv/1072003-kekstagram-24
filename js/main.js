@@ -1,5 +1,3 @@
-'use strict';
-
 function getRandomValue(min, max) {
   min = Math.abs(Math.ceil(min));
   max = Math.abs(Math.floor(max));
