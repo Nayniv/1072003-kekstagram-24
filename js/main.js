@@ -30,21 +30,21 @@ const COMMENTS = [
 
 const getRandomArrayElement = (elements) => elements[getRandomNumber(0, elements.length - 1)];
 
-let id = 0;
-
-const createPhoto = () => ({
-  id: ++id,
-  url: `photos/${id}.jpg`,
-  description: 'описание фотографии',
-  likes: getRandomNumber(15, 200),
-  comments: {
-    id: id,
-    avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-    message: getRandomArrayElement(COMMENTS),
-    name: getRandomArrayElement(NAMES),
-  },
+const createComment = (index) => ({
+  id: index,
+  avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
+  message: getRandomArrayElement(COMMENTS),
+  name: getRandomArrayElement(NAMES),
 });
 
-const photosArray = Array.from({length: PHOTOS_COUNT}, createPhoto);
+const createPhoto = (index) => ({
+  id: ++index,
+  url: `photos/${index}.jpg`,
+  description: 'описание фотографии',
+  likes: getRandomNumber(15, 200),
+  comments: new Array(createComment(index)),
+});
+
+const photosArray = Array.from({length: PHOTOS_COUNT}, (_, index) => createPhoto(index));
 
 console.log(photosArray);
