@@ -28,4 +28,4 @@ const createPhoto = (index) => ({
   comments: new Array(createComment(index)),
 });
 
-export {createPhoto};
+export const getMockPhotos = (photosCount) => Array.from({length: photosCount}, (_, index) => createPhoto(index));

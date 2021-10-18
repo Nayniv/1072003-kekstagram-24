@@ -1,7 +1,7 @@
-import {createPhoto} from './data.js';
+import {getMockPhotos} from './data.js';
 
 const PHOTOS_COUNT = 25;
 
-const photosArray = Array.from({length: PHOTOS_COUNT}, (_, index) => createPhoto(index));
+const photos = getMockPhotos(PHOTOS_COUNT);
 
-console.log(photosArray);
+console.log(photos);
