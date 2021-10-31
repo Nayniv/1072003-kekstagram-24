@@ -25,6 +25,7 @@ const createPhoto = (index) => ({
   url: `photos/${index}.jpg`,
   description: 'описание фотографии',
   likes: getRandomNumber(15, 200),
+  countComments: getRandomNumber(0, 10),
   comments: new Array(createComment(index)),
 });
 
