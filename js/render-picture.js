@@ -13,18 +13,19 @@ pictures.forEach((picture) => {
   pictureElement.querySelector('.picture__likes').textContent = picture.likes;
   pictureElement.querySelector('.picture__comments').textContent = picture.commentsCount;
   pictureElement.querySelector('.picture__img').src = picture.url;
-  pictureElement.querySelector('.picture').id = picture.id;
+  pictureElement.querySelector('.picture').dataset.pictureId = picture.id;
   pictureFragment.appendChild(pictureElement);
 });
 
 blockPictures.appendChild(pictureFragment);
 
 blockPictures.addEventListener('click', (evt) => {
-    evt.preventDefault;
-    const pictureId = evt.target.id;
-    if (pictureId) {
-      const picture = pictures.find((x) => x.id == pictureId);
-      openBigPicture(evt, picture);
-    }
-  });
+  const picture = evt.target.closest('.picture');
+  if (picture) {
+    evt.preventDefault();
+    const photoId = parseInt(picture.dataset.pictureId, 10);
+    const photo = pictures.find((x) => x.id === photoId);
+    openBigPicture(photo);
+  }
+});
 
